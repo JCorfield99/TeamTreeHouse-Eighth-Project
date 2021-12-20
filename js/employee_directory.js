@@ -1,3 +1,5 @@
+const employeeDirectory = document.getElementById('employees');
+
 function checkStatus(response) {
     if (response.ok) {
         return Promise.resolve(response);
@@ -14,4 +16,17 @@ function fetchData(url) {
 }
 
 fetchData('https://randomuser.me/api/?results=12')
-    .then(data => console.log(data.results));
+    .then(data => createUserCard(data.results));
+
+function createUserCard(employees) {
+    employees.forEach(employee => {
+        employeeDirectory.innerHTML += `
+            <div class="employee_card">
+                <img src="${employee.picture.medium}" alt="${employee.name.first} ${employee.name.last}">
+                <h2>${employee.name.first} ${employee.name.last}</h2>
+                <p>${employee.email}</p>
+                <p>${employee.location.city}</p>
+            </div>
+        `;
+    });
+}
