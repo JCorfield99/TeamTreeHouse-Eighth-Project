@@ -20,6 +20,9 @@ fetchData(url)
     .then(data => {
         const employeeData = data.results;
         createUserCard(employeeData);
+        const userCards = document.getElementsByClassName('employee-card');
+        const userModals = document.getElementsByClassName('employee-modal');
+        viewModal(userCards, userModals);
     });
 
 function createUserCard(employees) {
@@ -51,8 +54,16 @@ function createUserCard(employees) {
     });
 }
 
-employeeDirectory.addEventListener("click", (event) => {
-    const clickedCard = event.target.closest(".employee-card");
-    const cardModal = clickedCard.nextElementSibling;
-    cardModal.style.display = "block";
-});
+function viewModal(cards, modals) {
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const modal = modals[i];
+        const close = modal.querySelector('.close');
+        card.addEventListener("click", () => {
+            modal.style.display = "block";
+        });
+        close.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+    }
+}
