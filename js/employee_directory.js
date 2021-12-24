@@ -1,5 +1,5 @@
 const employeeDirectory = document.getElementById('employees');
-const url = "https://randomuser.me/api/?results=12";
+const url = "https://randomuser.me/api/?results=12&nat=gb";
 
 function checkStatus(response) {
     if (response.ok) {
@@ -23,6 +23,7 @@ fetchData(url)
         const userCards = document.getElementsByClassName('employee-card');
         const userModals = document.getElementsByClassName('employee-modal');
         viewModal(userCards, userModals);
+        filter(employeeData, userCards);
     });
 
 function createUserCard(employees) {
@@ -66,4 +67,25 @@ function viewModal(cards, modals) {
             modal.style.display = "none";
         });
     }
+}
+
+function filter(employees, employeeCards) {
+    let names = [];
+    const searchBar = document.getElementById('search');
+    const cards = employeeCards;
+    employees.forEach(employee => {
+        names.push(`${employee.name.first} ${employee.name.last}`);
+    });
+    searchBar.addEventListener("keyup", event => {
+        const searchString = event.target.value;
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i].parentElement;
+            const name = names[i].toLowerCase();
+            if (!name.startsWith(searchString.toLowerCase())) {
+                card.style.display = 'none';
+            } else {
+                card.style.display = 'flex';
+            }
+        }
+    });
 }
