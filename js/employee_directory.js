@@ -45,6 +45,7 @@ function createUserCard(employees) {
                         <h2>${employee.name.first} ${employee.name.last}</h2>
                         <p>${employee.email}</p>
                         <p>${employee.location.city}</p>
+                        <span class="linebreak"></span>
                         <p>${employee.cell}</p>
                         <p>${employee.location.street.number} ${employee.location.street.name} ${employee.location.city}, ${employee.location.state} ${employee.location.postcode}</p>
                         <p>Birthday: ${employee.dob.date}</p>

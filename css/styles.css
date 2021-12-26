@@ -90,14 +90,42 @@ h2 {
 }
 
 .modal-content {
-    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
     margin: 15% auto;
-    padding: 30px;
+    padding: 10px 30px 30px;
     border: solid 2px #ccc;
+    border-radius: 10px;
     background-color: #fff;
 }
 
+.modal-content img {
+    width: 50%;
+    border-radius: 50%;
+}
+
+.modal-content p {
+    font-size: .8rem;
+    text-align: center;
+    color: #aaa;
+}
+
+.modal-content h2,
+.modal-content p,
+.linebreak {
+    padding-top: 10px;
+}
+
+.linebreak {
+    width: 100%;
+    margin: 10px;
+    border-bottom: solid 2px #eee;
+}
+
 .close {
+    margin-left: auto;
     color: #555;
     float: right;
     font-size: 28px;
