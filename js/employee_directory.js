@@ -106,7 +106,7 @@ function filter(employees, employeeCards) {
         for (let i = 0; i < cards.length; i++) {
             const card = cards[i];
             const name = names[i].toLowerCase();
-            if (!name.startsWith(searchString.toLowerCase())) {
+            if (!name.includes(searchString.toLowerCase())) {
                 card.style.display = 'none';
             } else {
                 card.style.display = 'flex';
